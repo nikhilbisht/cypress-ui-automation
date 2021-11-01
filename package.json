@@ -1,0 +1,19 @@
+{
+  "name": "cypress-ui-automation",
+  "version": "1.0.0",
+  "description": "This project is for demo purpose only",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nikhilbisht/cypress-ui-automation.git"
+  },
+  "author": "Nikhil Bisht",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nikhilbisht/cypress-ui-automation/issues"
+  },
+  "homepage": "https://github.com/nikhilbisht/cypress-ui-automation#readme"
+}
