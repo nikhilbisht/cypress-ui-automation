@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/nikhilbisht/cypress-ui-automation/issues"
   },
-  "homepage": "https://github.com/nikhilbisht/cypress-ui-automation#readme"
+  "homepage": "https://github.com/nikhilbisht/cypress-ui-automation#readme",
+  "devDependencies": {
+    "cypress": "^8.7.0"
+  }
 }
