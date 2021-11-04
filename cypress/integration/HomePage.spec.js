@@ -1,4 +1,4 @@
-let userData,nav,elements;
+let userData,nav;
 
 describe("Navigate to website",()=>{
     before(()=>{
@@ -8,9 +8,6 @@ describe("Navigate to website",()=>{
         })
         cy.fixture('nav.json').then((navElement)=>{
             nav=navElement
-        })
-        cy.fixture('elements.json').then((element)=>{
-            elements=element
         })
         
     })
@@ -27,24 +24,25 @@ describe("Navigate to website",()=>{
     })
 
     it("Verify Navigation elements",()=>{
+        
         cy.get('#main-nav #toggleNav').children('li').each(($li,index,$list)=>{
-            cy.get('a').contains(nav[index])
+            cy.get('a').contains(nav[index]["heading"])
             
         })
     })
 
     it("Verify all the elements inside Interaction",()=>{
         cy.get('div.linkbox').eq(0).within(()=>{
-            cy.get('h1').contains('Interaction')
+            cy.get('h1').contains(nav[1]["heading"])
             cy.get('ul').children('li').each(($li,index,$list)=>{
-                cy.get('a').contains(elements[0].element[index])
+                cy.get('a').contains(nav[1].element[index])
                
            })
         })
         
     })
 
-    // it("Verify elements in interaction",()=>{
-
-    // })
+    it("Verify elements of Interaction(navigation panel)",()=>{
+        cy.get('#toggleNav').children('li').find('a').contains('Interaction').trigger('mouseover')
+    })
 })
