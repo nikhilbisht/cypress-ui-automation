@@ -4,7 +4,10 @@
   "description": "This project is for demo purpose only",
   "main": "index.js",
   "scripts": {
-    "test": "npm test"
+    "cy:run": "cypress run --spec 'cypress/integration/HomePage.spec.js'",
+    "delete:reports": "rm cypress/results/* || true",
+    "prereport": "npm run delete:reports",
+    "report": "cypress run --reporter cypress-multi-reporters --reporter-options configFile=reporter-config.json"
   },
   "repository": {
     "type": "git",
@@ -17,6 +20,9 @@
   },
   "homepage": "https://github.com/nikhilbisht/cypress-ui-automation#readme",
   "devDependencies": {
-    "cypress": "^8.7.0"
+    "cypress": "^8.7.0",
+    "mochawesome": "^7.0.1",
+    "mochawesome-merge": "^4.2.0",
+    "mochawesome-report-generator": "^6.0.1"
   }
 }
