@@ -4,10 +4,12 @@
   "description": "This project is for demo purpose only",
   "main": "index.js",
   "scripts": {
-    "cy:run": "cypress run --spec 'cypress/integration/HomePage.spec.js'",
-    "delete:reports": "rm cypress/results/* || true",
-    "prereport": "npm run delete:reports",
-    "report": "cypress run --reporter cypress-multi-reporters --reporter-options configFile=reporter-config.json"
+    "pretest": "npm run delete:reports",
+    "cy:run": "cypress run --spec 'cypress/integration/*.js'",
+    "merge-report":"npx mochawesome-merge cypress/reports/*.json -o cypress/reports/report.json",
+    "delete:reports": "rimraf cypress/reports/*",
+    "posttest": "npm run merge-report",
+    "test": "npm run cy:run"
   },
   "repository": {
     "type": "git",
@@ -24,5 +26,8 @@
     "mochawesome": "^7.0.1",
     "mochawesome-merge": "^4.2.0",
     "mochawesome-report-generator": "^6.0.1"
+  },
+  "dependencies": {
+    "rimraf": "^3.0.2"
   }
 }
