@@ -4,7 +4,12 @@
   "description": "This project is for demo purpose only",
   "main": "index.js",
   "scripts": {
-    "test": "npm test"
+    "pretest": "npm run delete:reports",
+    "cy:run": "cypress run --spec 'cypress/integration/*.js'",
+    "merge-report":"npx mochawesome-merge cypress/reports/*.json -o cypress/reports/report.json",
+    "delete:reports": "rimraf cypress/reports/*",
+    "posttest": "npm run merge-report",
+    "test": "npm run cy:run"
   },
   "repository": {
     "type": "git",
@@ -15,5 +20,14 @@
   "bugs": {
     "url": "https://github.com/nikhilbisht/cypress-ui-automation/issues"
   },
-  "homepage": "https://github.com/nikhilbisht/cypress-ui-automation#readme"
+  "homepage": "https://github.com/nikhilbisht/cypress-ui-automation#readme",
+  "devDependencies": {
+    "cypress": "^8.7.0",
+    "mochawesome": "^7.0.1",
+    "mochawesome-merge": "^4.2.0",
+    "mochawesome-report-generator": "^6.0.1"
+  },
+  "dependencies": {
+    "rimraf": "^3.0.2"
+  }
 }
