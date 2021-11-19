@@ -43,6 +43,13 @@ describe("Navigate to website",()=>{
     })
 
     it("Verify elements of Interaction(navigation panel)",()=>{
-        cy.get('#toggleNav').children('li').find('a').contains('Interaction').trigger('mouseover')
+        cy.get('#toggleNav').children('li').find('a').contains('Interaction').trigger('mouseover').then(()=>{
+            cy.get('#toggleNav>li').eq(1).within(()=>{
+                cy.get('ul').children('li').each(($li, index,$list)=>{
+                    cy.get('a').contains(nav[1].element[index])
+                })
+            })
+
+        })
     })
 })
